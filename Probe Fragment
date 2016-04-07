@@ -1,0 +1,30 @@
+# X.trop-Tail
+f = open('X_tropicalis.probe_fasta','r')
+g = open('probe check.txt','w')
+
+table=[]
+
+for line in f:
+    if line[0]== '>':
+        table.append(line)
+
+
+seqCount = 0
+tmpName = ""
+number=0
+
+for line in table:
+    Probe = line.split()[0]
+    NameNum=Probe[20:]
+    number = NameNum.find(':')
+    Name=NameNum[:number]
+    
+    if tmpName == Name :
+        seqCount += 1
+    else:
+        if tmpName != "":
+            g.write (tmpName + '\t' + str(seqCount) + '\n')
+        seqCount = 1
+        tmpName = Name
+g.write (tmpName + '\t' + str(seqCount) + '\n')
+g.close()
