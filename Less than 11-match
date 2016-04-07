@@ -1,0 +1,17 @@
+# X.trop-Tail
+g= open ('Me.txt','w')
+
+def diction(name):
+    f = open(name,'r')
+    table = []
+    for line in f:
+        table.append(line)
+    return table
+
+file1 = diction('Who.txt')
+file2 = diction('How many_P.txt')
+
+for line in file1:
+    if line in file2:
+        g.write(line)
+g.close()
