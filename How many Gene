@@ -1,0 +1,18 @@
+# X.trop-Tail
+f = open('aln-sam.txt','r')
+g = open('How many.txt','w')
+
+seqCount = 0
+tmpName = ""
+
+for line in f:
+    Name = line.split()[2]
+    if tmpName == Name :
+        seqCount += 1
+    else:
+        if tmpName != "":
+            g.write (tmpName + '\t' + str(seqCount) + '\n')
+        seqCount = 1
+        tmpName = Name
+g.write (tmpName + '\t' + str(seqCount) + '\n')
+g.close()
