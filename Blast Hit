@@ -1,0 +1,20 @@
+f = open('HtoX_prot.txt','r')
+g = open('Blast Hit.txt','w')
+
+tmpName = ""
+seqCount = 0
+
+table=[]
+for line in f:
+    table.append(line)
+
+
+for line in table:
+    check = line.split()[0]
+    if check != '#':
+        evalue = line.split()[10]
+        number = evalue.find('e')
+        if number != -1:
+            g.write(line)
+            
+g.close()
