@@ -1,0 +1,31 @@
+### 2016.5.16
+f = open('mart_export cDNA+Probe.txt','r')
+g = open('doing well-esb.txt','r')
+h = open ('Ensemble_probe_compare.txt','w')
+seqCount = 0
+tmpName = ""
+table=[]
+for line in f:
+    table.append(line)
+    
+table1=[]
+for line in g:
+    table1.append(line)
+    
+    
+for line in table:
+    cdna1 = line.split()[0]
+    probe1 = line.split()[-1]
+    for line in table1:
+        cdna = line.split()[0]
+        number =  cdna.find('.')
+        cdna2=cdna[:number]
+        probe2 = line.split()[1]
+        if probe1 == probe2:
+            if cdna1 == cdna2:
+                h.write(cdna1 + '\t' + probe1 + '\n')
+    
+    
+h.close()
+g.close()
+f.close()
