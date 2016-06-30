@@ -1,0 +1,40 @@
+#2016.5.26
+f= open ('union-fold.txt','r')
+g= open ('union updown.txt','w')
+
+table=[]
+for line in f:
+    table.append(line)
+
+for line in table:
+    Name1 = ""
+    Name2 = ""
+    Name3 = ""
+    pname = line.split()[0]
+    T6=float(line.split()[7])
+    T24=float(line.split()[8])
+    T60=float(line.split()[9])
+    if T6 > 1.05:
+        Name1 += "U"
+    elif T6 < 0.95:
+        Name1 += "D"
+    else:
+        Name1 +="S"
+        
+    if T24 > 1.05:
+        Name2 += "U"
+    elif T24 < 0.95:
+        Name2 += "D"
+    else:
+        Name2 +="S"
+        
+    if T60 > 1.05:
+        Name3 += "U"
+    elif T60 < 0.95:
+        Name3 += "D"
+    else:
+        Name3 +="S"
+    Name = Name1+Name2+Name3
+    g.write(pname + "\t" + Name + "\n")
+    
+g.close()
